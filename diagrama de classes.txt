@@ -1,0 +1,172 @@
+@startuml
+
+skin rose
+
+title Diagrama de Classes
+
+
+class Paciente {
+  +Int Prontuario
+  +str Nome
+  +date DataNascimento
+  +str Sexo
+  etc
+}
+
+class Agendamento {
+  +Int Id
+  +date DataHora
+  +Int Prontuario
+  +Int IdUnidade
+  +Int IdProfissional
+  +Int IdEspecialidade  
+  etc
+}
+
+class Profissional {
+  +Int Id
+  +str Nome
+  +str Categoria
+  etc
+}
+
+class Especialidade {
+  +Int Id
+  +str Descricao
+  etc
+}
+
+class Unidade {
+  +Int Id
+  +str Descricao
+  etc
+}
+
+class Leito {
+  +Int Id
+  +str Descricao
+  etc
+}
+
+class Sala {
+  +Int Id
+  +str Descricao
+  etc
+}
+
+class Procedimento {
+  +Int Id
+  +str Descricao
+  etc
+}
+
+
+
+class Receita {
+  +Int Id
+  +date DataHora
+  +Int Prontuario
+  etc
+}
+
+class ReceitaItem {
+  +Int IdReceita
+  +str IdItem
+  etc
+}
+
+class Prescricao {
+  +Int Id
+  +date DataHora
+  +Int Prontuario
+  etc
+}
+
+class PrescricaoItem {
+  +Int IdPrescricao
+  +str IdItem
+  etc
+}
+
+class RegistroInternacao {
+  +Int Id
+  +Int IdLeito
+  +date DataHoraEntrada
+  +date DataHoraSaida
+  +Int Prontuario
+  etc
+}
+
+class RegistroCirurgico {
+  +Int Id
+  +Int IdSala
+  +date DataHoraEntrada
+  +date DataHoraSaida
+  +Int Prontuario
+  etc
+}
+
+class RegistroCirurgicoProcedimento {
+  +Int IdRegistroCirurgico
+  +str IdProcedimento
+  etc
+}
+
+
+class Exame {
+  +Int Id
+  +Int IdLeito
+  +date DataHora
+  +Int Prontuario
+  etc
+}
+
+class ExameProcedimento {
+  +Int IdExame
+  +str IdProcedimento
+  etc
+}
+
+class Tratamento {
+  +Int Id
+  +date DataHoraInicio
+  +date DataHoraFim
+  +Int Prontuario
+  etc
+}
+
+class TratamentoProcedimento {
+  +Int IdTratamento
+  +str IdProcedimento
+  etc
+}
+
+
+Paciente <|-down- Agendamento
+Profissional <|-up- Agendamento
+Unidade <|-up- Agendamento
+Especialidade <|-up- Agendamento
+
+Paciente <|-down- Receita
+ReceitaItem <|-up- Receita
+
+Paciente <|-down- Prescricao
+PrescricaoItem <|-up- Prescricao
+
+Paciente <|-down- RegistroInternacao
+Leito <|-up- RegistroInternacao
+
+Paciente <|-down- RegistroCirurgico
+Sala <|-up- RegistroCirurgico
+RegistroCirurgicoProcedimento <|-up- RegistroCirurgico
+Procedimento <|-up- RegistroCirurgicoProcedimento
+
+Paciente <|-down- Exame
+ExameProcedimento <|-up- Exame
+Procedimento <|-up- ExameProcedimento
+
+Paciente <|-down- Tratamento
+TratamentoProcedimento <|-up- Tratamento
+Procedimento <|-up- TratamentoProcedimento
+
+@enduml

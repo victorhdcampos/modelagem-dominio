@@ -1,0 +1,16 @@
+@startuml
+title Declaração de Visão do Domínio - Agendamento de Consulta
+
+actor Paciente
+actor Recepcionista
+
+rectangle "Agendamento" as Agendamento {
+  note top of Agendamento
+    Foco Principal: Agendar o paciente para o atendimento primário.
+  end note
+}
+
+Paciente --> Recepcionista : "Solicita agendamento"
+Recepcionista --> Agendamento : "Cria Agendamento"
+Agendamento --> Paciente : "Retorna detalhes do Agendamento"
+@enduml

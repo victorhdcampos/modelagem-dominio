@@ -1,0 +1,12 @@
+@startuml
+title Sequência - Criação de Agendamento de Consulta
+
+actor "Recepcionista" as Recepcionista
+participant "Agendas" as Agendas
+participant "Agendamento" as Agendamento
+
+Recepcionista -> Agendas : Iniciar Criação de Agendamento
+Agendas -> Agendamento : Obter Detalhes do Agendamento
+Agendamento --> Agendas : Retorna Detalhes do Agendamento
+Agendas -> Recepcionista : Exibir Agendamento Criado
+@enduml
